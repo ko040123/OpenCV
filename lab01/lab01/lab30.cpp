@@ -18,4 +18,5 @@ int main() {
 	imshow("Adaptive Binary", adaptive_binary);
 
 	waitKey(0);
+	return 0;
 }
