@@ -4,17 +4,20 @@
 using namespace cv;
 using namespace std;
 
-// Drawing Function
+// Memory management / Pixel Access
 
 int main() {
 	Mat image = imread("lenna.png");
 
-	Rect face(Point(200, 180), Size(180, 210));
+	MatIterator_<Vec3b> it = image.begin<Vec3b>();
+	MatIterator_<Vec3b> end = image.end<Vec3b>();
 
-	rectangle(image, face, Scalar(0,255,0), 3);
+	for (it; it != end; it++) {
+		(*it)[0] = 255;
+	}
 
 	imshow("Image", image);
-
+	
 	waitKey(0);
 	return 0;
 }
